@@ -34,12 +34,10 @@ AI-NEWS-SUMMARIZER/
 ├── runs/ # Auto-saved summaries and experiment outputs
 └── .env # Contains GEMINI_API_KEY (keep this private!)
 
-yaml
+go
 Copy code
 
-> ⚠️ `.env` must **not** be pushed to GitHub. Add it to `.gitignore`.
-
----
+> ⚠️ `.env` must **not** be pushed to GitHub — make sure it’s in your `.gitignore`
 
 ## ⚙️ Setup Instructions
 
