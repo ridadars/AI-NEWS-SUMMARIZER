@@ -1,5 +1,3 @@
----
-
 ```markdown
 # 📰 AI News Summarizer & Q&A Tool
 
