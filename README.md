@@ -1,6 +1,3 @@
-Here’s a **clean, human-friendly, and GitHub-ready README.md** based on what you shared — polished for clarity, formatting, and professionalism:
-
-```markdown
 # 📰 AI News Summarizer & Q&A Tool  
 
 A beginner-friendly Python project that:  
@@ -164,27 +161,4 @@ runs/*.json
 * Perfect for **Fellowship assignments or personal learning**
 
 ---
-
-## 🚀 Next Steps
-
-* ✅ Push your project to GitHub
-* ✅ Use `observations.md` to document your findings
-* ✅ Share results in your fellowship Slack/Discord for feedback
-
-````
-
----
-
-### ✅ Should You Update on GitHub or PyCharm?
-- You already added the README in PyCharm, so now **commit & push**:
-  ```bash
-  git add README.md
-  git commit -m "Add detailed README"
-  git push origin main
-````
-
-* This will update your GitHub repository automatically.
-
----
-
-Would you like me to also generate a **sample `requirements.txt`** for you (with the correct Gemini library & dotenv included), so you can copy-paste it into your project?
+\
