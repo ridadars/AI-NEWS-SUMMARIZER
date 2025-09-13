@@ -1,96 +1,190 @@
-📰 AI News Summarizer & Q&A Tool
-A beginner-friendly Python tool that:
+Here’s a **clean, human-friendly, and GitHub-ready README.md** based on what you shared — polished for clarity, formatting, and professionalism:
 
-Summarizes any news article in 3–4 clear sentences
-Lets you ask at least 3 questions about the article
-Tests how summaries change at different creativity levels (temperature 0.1 / 0.7 / 1.0)
-Logs your results and analysis for your assignment
-Built as part of Week 4 of the AI Fellowship, using the Gemini API by Google.
+```markdown
+# 📰 AI News Summarizer & Q&A Tool  
 
-✨ Features
-Input any article (paste text, use a .txt file, or URL if supported)
+A beginner-friendly Python project that:  
 
-Shows original article length (words + characters)
+- 📄 **Summarizes any news article** in 3–4 sentences  
+- ❓ **Lets you ask questions** about the article (Q&A mode)  
+- 🎛 **Experiments with creativity levels** (temperature = 0.1 / 0.7 / 1.0)  
+- 📂 **Logs all results** to help with your analysis & write-up  
 
-Generates a concise summary (3–4 sentences)
+Built as part of **Week 4 of the AI Fellowship** — powered by **Gemini API (Google AI Studio)**.
 
-Allows interactive Q&A based only on the article
+---
 
-Creates multiple summaries at different temperatures
+## ✨ Features
 
-0.1 → Robotic & factual
-0.7 → Balanced & clear
-1.0 → More creative & free
-Saves all outputs in the runs/ folder for analysis
+✅ Paste or load any article text (.txt or stdin)  
+✅ Shows **article length** (words + characters)  
+✅ Generates a **clear, concise 3–4 sentence summary**  
+✅ Supports **interactive Q&A** — answers based only on the article  
+✅ Creates **multiple summaries at different temperatures**  
 
-Helps you complete observations.md for your assignment write-up
+| Temperature | Style                          |
+|-------------|--------------------------------|
+| `0.1`       | Robotic, factual, deterministic |
+| `0.7`       | Balanced, natural (recommended) |
+| `1.0`       | Creative, free-flowing          |
 
-📁 Project Structure
+🗂 **Auto-saves results** in `runs/` for easy analysis.
+
+---
+
+## 📁 Project Structure
+
+```
+
 AI-NEWS-SUMMARIZER/
 │── summarizer.py      # Main script
 │── requirements.txt   # Dependencies
 │── article.txt        # Paste your article here
-│── observations.md    # Analysis of temperature outputs
-│── rubric.md          # (Optional) Quality scoring rubric
-│── runs/              # Auto-saved summaries & experiment outputs
-└── .env               # Contains GEMINI_API_KEY (keep private!)
-⚠ Important: .env must not be pushed to GitHub. Add it to .gitignore.
+│── observations.md    # Your notes on temperature outputs
+│── rubric.md          # (Optional) Scoring rubric
+│── runs/              # Auto-saved summaries & outputs
+└── .env               # Contains GEMINI\_API\_KEY (keep this private!)
 
-⚙ Setup Instructions
-1. Install Python
-Make sure you have Python 3.10+ installed:
+````
 
-python --version
-2. Create a Virtual Environment
-python -m venv .venv
+⚠ **Important:** Add `.env` and `runs/*.json` to `.gitignore` before pushing to GitHub.
 
-# Windows
-.venv\Scripts\activate
+---
 
-# macOS / Linux
-source .venv/bin/activate
-3. Install Dependencies
-pip install -r requirements.txt
-4. Add Your Gemini API Key
-Get a key from Google AI Studio.
-Create a .env file in the project root with:
-GEMINI_API_KEY=your_api_key_here
-▶ How to Use
-Option 1 — From a .txt File (Recommended)
-Paste your article into article.txt and run:
+## ⚙ Setup Instructions
 
+1. **Install Python** (3.10+ recommended):  
+   ```bash
+   python --version
+````
+
+2. **Create a Virtual Environment**
+
+   ```bash
+   python -m venv .venv
+   ```
+
+   * **Windows:**
+
+     ```bash
+     .venv\Scripts\activate
+     ```
+   * **macOS/Linux:**
+
+     ```bash
+     source .venv/bin/activate
+     ```
+
+3. **Install Dependencies**
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Add Your Gemini API Key**
+
+   * Get a key from [Google AI Studio](https://aistudio.google.com/).
+   * Create a `.env` file in the root:
+
+     ```env
+     GEMINI_API_KEY=your_api_key_here
+     ```
+
+---
+
+## ▶ How to Use
+
+### Option 1 — From a `.txt` File (Recommended)
+
+```bash
 python summarizer.py --file article.txt --experiment-temps "0.1,0.7,1.0" --qa
-Option 2 — Paste Text in Terminal
+```
+
+### Option 2 — Paste Text in Terminal
+
+```bash
 python summarizer.py --stdin --experiment-temps "0.1,0.7,1.0" --qa
-Option 3 — From a URL (if supported)
+```
+
+### Option 3 — From a URL (if supported)
+
+```bash
 python summarizer.py --url "https://example.com/article" --experiment-temps "0.1,0.7,1.0" --qa
-⚠ Many sites block scraping. If you see 403 or 401 errors, copy the article into article.txt instead.
+```
 
-💬 Asking Questions (Q&A)
-After summarization, the script will ask you to enter questions. Example:
+⚠ Many websites block scraping. If you get 401/403 errors, copy-paste the article into `article.txt` instead.
 
+---
+
+## 💬 Q\&A Mode
+
+After summarization, the script will let you ask questions:
+
+```text
 Q1: Who performed at Wembley Stadium?
 Q2: How many people attended their tour?
 Q3: What was unique about their concert?
-The tool answers using only the article text.
+```
 
-📊 Temperature Experiments
-You can compare how summaries change at different temperatures:
+Answers will use only the article text (not external knowledge).
 
-0.1 → Robotic, factual
-0.7 → Balanced, natural
-1.0 → Creative, free-flowing
-All results are auto-saved into runs/ and can be copied into observations.md for your analysis.
+---
 
-📌 .gitignore
-Make sure your .gitignore includes:
+## 📊 Temperature Experiments
 
+Compare summaries at different **creativity levels**:
+
+* `0.1` → strict, factual
+* `0.7` → natural, recommended
+* `1.0` → creative, free-flowing
+
+You can copy these results to `observations.md` for your assignment.
+
+---
+
+## 📌 .gitignore
+
+Add the following to keep sensitive files safe:
+
+```
 .env
 .venv/
-_pycache_/
+__pycache__/
 *.pyc
 runs/*.json
-📎 Notes
-Designed for learning & practice with LLMs in real-world tasks
-Beginner-friendly — requires only basic Python
-All work runs locally on your machine
+```
+
+---
+
+## 🧠 Notes
+
+* Designed for **beginners learning LLM workflows**
+* Runs **locally** — no external servers needed
+* Great practice for experimenting with **prompting & temperature tuning**
+* Perfect for **Fellowship assignments or personal learning**
+
+---
+
+## 🚀 Next Steps
+
+* ✅ Push your project to GitHub
+* ✅ Use `observations.md` to document your findings
+* ✅ Share results in your fellowship Slack/Discord for feedback
+
+````
+
+---
+
+### ✅ Should You Update on GitHub or PyCharm?
+- You already added the README in PyCharm, so now **commit & push**:
+  ```bash
+  git add README.md
+  git commit -m "Add detailed README"
+  git push origin main
+````
+
+* This will update your GitHub repository automatically.
+
+---
+
+Would you like me to also generate a **sample `requirements.txt`** for you (with the correct Gemini library & dotenv included), so you can copy-paste it into your project?
