@@ -24,6 +24,7 @@ A beginner-friendly Python tool that:
 ## 📁 Project Structure
 
 
+```text
 AI-NEWS-SUMMARIZER/
 ├── summarizer.py      # Main script
 ├── requirements.txt   # Dependencies
@@ -32,6 +33,7 @@ AI-NEWS-SUMMARIZER/
 ├── rubric.md          # (Optional) Quality scoring rubric
 ├── runs/              # Auto-saved summaries & experiment outputs
 └── .env               # Contains GEMINI_API_KEY (keep private!)
+```
 
 
 ⚠ *Important*: .env must not be pushed to GitHub. Add it to .gitignore.
