@@ -1,48 +1,54 @@
-# 📰 AI News Summarizer & Q&A (Gemini API)
+# 📰 AI News Summarizer & Q&A Tool
 
-**Week 4 Fellowship Assignment** — a beginner-friendly Python tool that:
-- Summarizes any news article in **3–4 sentences**
-- Lets you ask **at least 3 questions** about that article
-- Compares model behavior at **temperatures 0.1 / 0.7 / 1.0**
-- Saves run outputs in a `runs/` folder
-- (Bonus) Fun styles: `pirate`, `comedian`, `sports`
+A simple and beginner-friendly Python tool that:
+- Summarizes any news article in **3–4 clear sentences**
+- Lets you ask **at least 3 questions** about the article
+- Tests how summaries change at **different creativity levels (temperature 0.1 / 0.7 / 1.0)**
+- Logs your results and analysis for your assignment
 
-Built with the [Gemini API](https://aistudio.google.com/) by Google.
+This project was built as part of **Week 4 of the AI Fellowship**, using the [Gemini API](https://aistudio.google.com/) by [Google](https://about.google/).
 
 ---
 
-## ✨ Features
-- **Summarization:** short, faithful summaries (3–4 sentences)
-- **Interactive Q&A:** ask questions based on the article only
-- **Experiments:** test temperatures and record observations
-- **Input options:** URL (if allowed), local `.txt`, or paste via stdin
-- **Safe prompts:** Q&A answers “Only from the article; otherwise say ‘Not stated in the article.’”
+## ✨ What It Does
+This tool makes it easier to work with long articles.  
+You give it an article (by pasting it or using a `.txt` file), and it:
+
+1. Shows the **original article length** in words and characters  
+2. Creates a **3–4 sentence summary**  
+3. Lets you **ask questions** about the article content  
+4. Generates **multiple summaries at different temperatures (0.1 = robotic, 1.0 = creative)**  
+5. Helps you **record your observations** and complete your assignment write-up
 
 ---
 
 ## 📁 Project Structure
-ai-news-summarizer/
+
+AI-NEWS-SUMMARIZER/
+│
 ├── summarizer.py # Main script
-├── requirements.txt # Dependencies
-├── article.txt # Paste your article text here
-├── observations.md # Fill in your temperature findings
-├── rubric.md # (Optional) Quality scoring table
-├── runs/ # Generated summaries & experiment JSONs
-└── .env # GEMINI_API_KEY=... (DO NOT COMMIT)
+├── requirements.txt # All dependencies
+├── article.txt # Paste your article here
+├── observations.md # Your analysis of temperature outputs
+├── rubric.md # (Optional) Quality scoring rubric
+├── runs/ # Auto-saved summaries and experiment outputs
+└── .env # Contains GEMINI_API_KEY (keep this private!)
 
 yaml
 Copy code
 
-> ⚠️ Add `.env` and `.venv/` to `.gitignore` so your key & venv aren’t uploaded.
+> ⚠️ `.env` must **not** be pushed to GitHub. Add it to `.gitignore`.
 
 ---
 
-## ⚙️ Setup
+## ⚙️ Setup Instructions
 
-1) **Python 3.10+**  
-   ```bash
-   python --version
-(Recommended) Virtual environment
+### 1. Install Python
+Make sure you have Python 3.10+ installed:
+```bash
+python --version
+2. Create a Virtual Environment
+This keeps your project clean and separate.
 
 bash
 Copy code
@@ -51,80 +57,58 @@ python -m venv .venv
 .venv\Scripts\activate
 # macOS / Linux
 source .venv/bin/activate
-Install dependencies
-
+3. Install Dependencies
 bash
 Copy code
 pip install -r requirements.txt
-Gemini API key
+4. Add Your Gemini API Key
+Get a key from Google AI Studio
 
-Get one from Google AI Studio → https://aistudio.google.com/
+Create a file called .env in the project folder with this inside:
 
-Create a file named .env in the project folder:
-
-ini
+env
 Copy code
 GEMINI_API_KEY=your_api_key_here
-▶️ Usage
-Option A — Use a .txt file (recommended)
-Put your article in article.txt, then:
+▶️ How to Use
+Option 1 — Use a .txt File (recommended)
+Paste your article into article.txt and run:
 
 bash
 Copy code
 python summarizer.py --file article.txt --experiment-temps "0.1,0.7,1.0" --qa
-Option B — Paste text in terminal
+Option 2 — Paste Text in Terminal
 bash
 Copy code
 python summarizer.py --stdin --experiment-temps "0.1,0.7,1.0" --qa
-You’ll be prompted: “Paste your article text…”
-
-Option C — Use a URL (not all sites allow scraping)
+Option 3 — Use a URL (if allowed)
 bash
 Copy code
-python summarizer.py --url "https://example.com/your-article" --experiment-temps "0.1,0.7,1.0" --qa
-If the site blocks scraping (e.g., many BBC/Reuters pages), copy/paste the text into article.txt instead.
+python summarizer.py --url "https://example.com/article" --experiment-temps "0.1,0.7,1.0" --qa
+⚠️ Many sites block scraping. If you get a 403 or 401 error, copy the article into article.txt instead.
 
-💬 Q&A Prompting (what the script sends)
-Each question is sent along with the full article text, e.g.:
+💬 Asking Questions (Q&A)
+After summarization, the script will ask you to enter questions like:
 
-vbnet
+makefile
 Copy code
-Question: [your question]
-Article: [full article text]
-The model is instructed to answer only using the article.
+Q1: Who performed at Wembley Stadium?
+Q2: How many people attended their tour?
+Q3: What was unique about their concert?
+Each question is answered using only the article text.
 
-🧪 Record Your Observations
-Run:
+📊 Temperature Experiments
+You can test how creativity affects summaries:
 
-bash
-Copy code
-python summarizer.py --file article.txt --experiment-temps "0.1,0.7,1.0"
-Open observations.md and paste the 3 summaries (0.1 / 0.7 / 1.0).
+0.1 → Robotic, factual
 
-Write what changed, which temperature was best, and why.
+0.7 → Balanced and clear
 
-🔧 Useful Flags
---style pirate|comedian|sports → fun summary tone
+1.0 → More creative and free
 
---disable-thinking → reduces reasoning budget (faster/cheaper on 2.5-flash)
+All outputs are saved into runs/, and you can paste them into observations.md to write your comparison.
 
---max-questions 5 → ask more than three questions
-
-🧯 Troubleshooting
-401/403 on URL input: the site likely blocks scraping → use --file or --stdin.
-
-Key not found: ensure .env exists and contains GEMINI_API_KEY=....
-
-Accidentally committed .env:
-
-git rm --cached .env
-
-Add .env to .gitignore
-
-Commit & push; rotate the key in AI Studio.
-
-🛡️ Privacy
-Never commit .env (API keys) or your .venv/ folder. Recommended .gitignore:
+📌 .gitignore (important!)
+Make sure these are inside your .gitignore so they don’t get uploaded:
 
 markdown
 Copy code
@@ -133,3 +117,9 @@ Copy code
 __pycache__/
 *.pyc
 runs/*.json
+📎 Notes
+This project is designed for learning how to use LLMs (Large Language Models) in real-world tasks.
+
+It’s intentionally beginner-friendly — you only need basic Python to run it.
+
+All work stays local on your machine.
